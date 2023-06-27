@@ -1,19 +1,15 @@
 import cv2 as cv
 import numpy as np
 
-img_in = cv.imread('work1/pic/light.jpg',cv.IMREAD_GRAYSCALE)
+img_in = cv.imread('work1/pic/Sea.jpg', cv.IMREAD_GRAYSCALE)
 
-gamma = 2
-gamma_corrected = (img_in/255)**gamma
+for gamma in range(1, 5):
+    gamma_corrected = (img_in / 255) ** gamma
+    gamma_corrected = gamma_corrected * 255
+    img_out = np.array(gamma_corrected, dtype='uint8')
+    cv.imshow(f'Power-LawOUT (gamma={gamma})', img_out)
+    cv.waitKey(2000)
+    # cv.imwrite(f'OutputPowerLaw_gamma_{str(gamma)}.png', img_out)
+    # สว่าง -> มืด
 
-gamma_corrected = gamma_corrected**255
-
-img_out = np.array(gamma_corrected,dtype='uint8')
-
-cv.imshow('Power-LawIn',img_in)
-cv.imshow('Power-LawOUT',img_out)
-cv.waitKey(delay=10000)
 cv.destroyAllWindows()
-
-# cv.imwrite('InputPowerLaw.png',img_in)
-# cv.imwrite('OutputPowerLaw.png',img_out)
