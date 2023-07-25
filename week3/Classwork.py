@@ -1,6 +1,8 @@
 import cv2 as cv
 import random
 
+# gererate noise
+
 img = cv.imread('week3/pic/p1.jpg',cv.IMREAD_GRAYSCALE)
 
 density_salt = 0.1
